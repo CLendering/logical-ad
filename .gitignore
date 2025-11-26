@@ -1,1 +1,6 @@
 *.pth
+*pycache*
+comp_maps/
+datasets/
+debug/
+results/

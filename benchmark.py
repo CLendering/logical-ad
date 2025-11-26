@@ -139,7 +139,7 @@ def run_benchmark():
         print(f"\n=== Processing Category: {category} ===")
         paths = get_image_paths(category)
 
-        if category == "breakfast_box":
+        if category in ["breakfast_box", "juice_bottle"]:
             continue
 
         # Check if data exists
@@ -153,7 +153,7 @@ def run_benchmark():
         # Load Training Data (few shots for logic mining; adjust if needed)
         train_imgs = [load_image(p) for p in paths["train"][:16]]
         print(f"    Training on {len(train_imgs)} normal images...")
-        nsad.train(train_imgs)
+        nsad.train(train_imgs, category)
 
         # --- Quick balanced subsampling for test sets ---
         good_paths = paths["test_good"]
